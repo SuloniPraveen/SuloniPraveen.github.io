@@ -181,7 +181,7 @@
       display: flex;
       flex-direction: column;
       align-items: left; /* Align skill cards to the left */
-      margin-top: 10rem; /* Increased margin-top to push down the skills section */
+      margin-top: 5rem; /* Reduced margin-top */
     }
 
     .skill-cards {
@@ -303,18 +303,25 @@
       box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
       margin-top: 1rem;
       text-align: left;
+      display: flex; /* Added flexbox */
+      flex-direction: column; /* Vertical stacking */
+      gap: 1rem; /* Space between items */
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      color: #ddd;
+      display: flex; /* Added flexbox */
+      align-items: center; /* Center vertically */
     }
 
     .contact-info img {
       width: 40px;
       height: 40px;
       margin-right: 0.5rem;
+      margin-bottom: 0.5rem; /* Moved images slightly down */
     }
 
-    .contact-info p {
-      margin: 0.5rem 0;
-      color: #ddd;
-    }
   </style>
  
 </head>
@@ -507,8 +514,6 @@
 </div>
 
 <script>
-  
-
   const navLinks = document.querySelectorAll('.nav-header a');
   const sections = document.querySelectorAll('.section');
 
@@ -522,7 +527,7 @@
       const targetSection = document.getElementById(target);
       if (targetSection) {
         window.scrollTo({
-          top: targetSection.offsetTop - document.querySelector('.header').offsetHeight,
+          top: targetSection.offsetTop - document.querySelector('.header').offsetHeight - 20, // Adjusted scroll position
           behavior: 'smooth'
         });
       }
