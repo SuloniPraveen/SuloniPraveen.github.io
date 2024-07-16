@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suloni Praveen's Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('./images/galaxy.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      flex-grow: 1;
+      justify-content: left;
+      align-items: flex-start;
+    }
+
+    .main-content {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: left; /* Align content to the left */
+    }
+
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      padding: 1rem 2rem;
+      background: #000;
+      color: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      margin-left: -1rem; /* Shift header slightly to the left */
+    }
+
+    .header .name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-header {
+      display: flex;
+      gap: 1.5rem;
+      margin-left: -1rem; /* Shift navigation slightly to the left */
+    }
+
+    .nav-header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-header a:hover,
+    .nav-header a.active {
+      transform: scale(1.1); /* Increase text size on hover */
+    }
+
+    .section {
+      color: #fff;
+      padding: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 2rem;
+      text-align: left;
+      margin-top: 8rem;
+    }
+
+    .section.active {
+      opacity: 1;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background: #fff;
+      margin-top: 10px;
+    }
+
+    .section p {
+      color: #ccc;
+    }
+
+    .icon-links {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center; /* Center the icons */
+      gap: 1rem;
+    }
+
+    .icon-links a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+
+    .icon-links a:hover img,
+    .icon-links a:focus img {
+      transform: scale(1.1);
+    }
+
+    .profile-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: left; /* Align the profile container to the left */
+    }
+
+    .profile-img {
+      width: 250px;
+      height: auto;
+      border: 4px solid #000; /* Black border added */
+      margin-left: 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      background-color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 2rem;
+      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    .button:hover {
+      background-color: #ff8a00;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .skills {
+      display: flex;
+      flex-direction: column;
+      align-items: left; /* Align skill cards to the left */
+      margin-top: 2rem;
+    }
+
+    .skill-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      justify-content: center; /* Center the skill cards */
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: #161515;
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center the content within skill cards */
+      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+      color: #ff006f;
+    }
+
+    .skill-card p {
+      color: #ddd;
+      margin: 0;
+      text-align: center; /* Center align the text */
+    }
+
+    .project-grid, .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .project-card, .research-card {
+      background: #161515;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);/* Pink shading */
+      height: 400px; /* Set a fixed height for uniformity */
+    }
+
+    .project-card:hover, .research-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(255, 20, 147, 0.9); /* Darker pink shadow on hover */
+    }
+
+    .project-card img, .research-card img {
+      width: 100%;
+      height: 200px; /* Fixed height for uniformity */
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      object-fit: cover; /* Ensure image covers the area without distortion */
+    }
+
+    .project-card h3, .research-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      text-align: center; /* Center-align text */
+    }
+
+    .project-card p, .research-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #aaa;
+      text-align: center; /* Center-align text */
+    }
+
+    .project-card span, .research-card span {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #ff8a00;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact-form label {
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: #fff;
+    }
+
+    .contact-form input[type="submit"] {
+      background: linear-gradient(45deg, #9d50bb, #6e48aa, #e8cdcd, #f8f8f8);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      background-color: #ff8a00;
+      transform: scale(1.05);
+    }
+  </style>
+  <!-- Include EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("ACVybv-LqsiWlMhus"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+    })();
+  </script>
+</head>
+<body>
+
+<div class="header">
+  <div class="name">Suloni Praveen</div>
+  <div class="nav-header">
+    <a href="#home" class="active" data-target="home">About</a>
+    <a href="#skills" data-target="skills">Skills</a>
+    <a href="#projects" data-target="projects">Projects</a>
+    <a href="#research" data-target="research">Research</a>
+    <a href="#certifications" data-target="certifications">Certifications</a>
+    <a href="#contact" data-target="contact">Contact</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="main-content">
+    <div class="section about-me active" id="home">
+      <div class="profile-container">
+        <div>
+          <h2>About Me</h2>
+          <p>Hi everyone! My name is Suloni Praveen and I am a passionate Software Developer and Machine Learning enthusiast. I am currently pursuing my Master's in Computer Science at the University of Southern California. I thrive on solving complex problems and turning them into innovative solutions.</p> 
+          <p>🌟 From crafting dynamic web applications to building smart machine learning models, I'm always eager to learn new things and push the boundaries of what's possible.</p>
+          <p>Leadership and teamwork are at the heart of my work ethics. Whether leading a project or collaborating with a team, I believe in the power of individual and collective efforts to achieve remarkable results. Let's connect and create something amazing together!💻</p>
+          
+          <div class="icon-links">
+            <a href="https://www.linkedin.com/in/suloni-praveen-484814217/" target="_blank">
+              <img src="./images/linkedin.png.webp" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/SuloniPraveen" target="_blank">
+              <img src="./images/git.png" alt="GitHub">
+            </a>
+          </div>
+          <a href="https://sulonipraveen.github.io/SULONI%20PRAVEEN%20RESUME.pdf" target="_blank" class="button">View Resume</a>
+        </div>
+        <img src="./images/profilepic.jpeg" alt="Suloni Praveen" class="profile-img">
+      </div>
+    </div>
+
+    <div class="section skills" id="skills">
+      <h2>Skills</h2>
+      <div class="skill-cards">
+        <div class="skill-card">
+          <h3>Programming</h3>
+          <p>Python, C, C++, Java, JavaScript, TypeScript, SQL</p>
+        </div>
+        <div class="skill-card">
+          <h3>Web Development</h3>
+          <p>HTML, CSS, React, Node, React Native, Swift, PHP, JSON, Bootstrap, AWS</p>
+        </div>
+        <div class="skill-card">
+          <h3>Machine Learning</h3>
+          <p>NLP, TensorFlow, Scikit-Learn, Keras, Pandas, Matplotlib, NumPy, PyTorch</p>
+        </div>
+        <div class="skill-card">
+          <h3>Research</h3>
+          <p>Data Analysis, Scientific Writing, Experimental Design</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section projects" id="projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <a href="https://github.com/SuloniPraveen/Sequence-Alignment_Memory-Efficient-Version" target="_blank" class="project-card">
+          <img src="./images/sequence.png" alt="Sequence">
+          <h3>Sequence Alignment Project</h3>
+          <p>DSA</p>
+        </a>
+        <a href="https://github.com/SuloniPraveen/Okra_Disease_Detection_Using_Deep-Learning" target="_blank" class="project-card">
+          <img src="./images/okra.jpeg" alt="Okra">
+          <h3>Okra Disease Detection System</h3>
+          <p>Machine Learning</p>
+        </a>
+        <a href="https://sulonipraveen.github.io/Used%20Phone%20Price%20Prediction.pdf" target="_blank" class="project-card">
+          <img src="./images/smartphone.png" alt="Smart Phone">
+          <h3>Used Smart Phone Price Prediction System</h3>
+          <p>Artificial Intelligence and Machine Learning</p>
+        </a>
+        <a href="https://github.com/SuloniPraveen/https---github.com-CoachEd03-VVCE-backend-tree-meals" target="_blank" class="project-card">
+          <img src="./images/restaurant.png" alt="Restaurant">
+          <h3>Restaurant Management System</h3>
+          <p>Web Development</p>
+        </a>
+        <a href="https://github.com/Sulonipraveen/Crime-Record-Management-System" target="_blank" class="project-card">
+          <img src="./images/crimerecord.png" alt="Crime">
+          <h3>Crime Record Management System</h3>
+          <p>Web Development</p>
+        </a>
+        <a href="https://github.com/SuloniPraveen/Medicine_Reminder_Application" target="_blank" class="project-card">
+          <img src="./images/medtime.jpg" alt="MedTime">
+          <h3>Medicine Reminder Application</h3>
+          <p>App Development</p>
+        </a>
+        <a href="https://github.com/SuloniPraveen/Breadth_First_Search_OpenGL" target="_blank" class="project-card">
+          <img src="./images/bfs.jpg" alt="BFS">
+          <h3>BFS Algorithm</h3>
+          <p>Computer Graphics and DSA</p>
+        </a>
+      </div>
+    </div>
+    <div class="section research" id="research">
+      <h2>Research</h2>
+      <div class="research-grid">
+        <a href="https://sulonipraveen.github.io/Cotton%20Plant%20Disease%20Detection%20Research%20Paper.pdf" target="_blank" class="research-card">
+          <img src="./images/cotton.jpg" alt="Research 1">
+          <h3>Cotton Plant Disease Detection Research Paper</h3>
+          <p>Machine Learning and Deep Learning</p>
+        </a>
+        <a href="https://sulonipraveen.github.io/Okra%20Disease%20Detection%20Research%20Paper.pdf" target="_blank" class="research-card">
+          <img src="./images/okraLeaves.jpg" alt="Research 2">
+          <h3>Okra Plant Disease Detection Research Paper</h3>
+          <p>Machine Learning and Deep Learning</p>
+        </a>
+        <a href="https://sulonipraveen.github.io/Sentiment%20Analysis%20Review%20Paper.pdf" target="_blank" class="research-card">
+          <img src="./images/sentiment.webp" alt="Research 3">
+          <h3>Sentiment Analysis Review Paper</h3>
+          <p>Machine Learning and NLP</p>
+        </a>
+      </div>
+    </div>
+    <div class="section certifications" id="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li>Attended the Arduino Programming Workshop from Tequed Labs, Bangalore. (2019)</li>
+        <li>Microsoft Technology Associate certification in Introduction to Programming Using Python. (2020)</li>
+        <li>Programming for Everybody certification from the University of Michigan. (2020)</li>
+        <li>Crash Course on Data Science Certification from John Hopkins University. (2020)</li>
+        <li>Certified from IBM Skills Build on Data Structures. (2021)</li>
+        <li>RPA certification from Great Learning Platform. (2022)</li>
+        <li>Certified from UiPath Studio on Robotic Process Automation. (2022)</li>
+        <li>Building an AI certification from Udemy. (2022)</li>
+        <li>Big Data and AI certification from Great Learning Platform. (2022)</li>
+        <li>UI/UX certification from Great Learning Platform. (2022)</li>
+        <li>Visual Graphics certification from Great Learning Platform. (2022)</li>
+      </ul>
+    </div>
+    <div class="section contact" id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize EmailJS
+  (function() {
+    emailjs.init("ACVybv-LqsiWlMhus"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+  })();
+
+  // Handle form submission
+  document.querySelector('.contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    emailjs.sendForm('service_yjmq8u4', 'template_rdbutte', this)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Message sent successfully!');
+      }, function(error) {
+        console.log('FAILED...', error);
+        alert('Failed to send message. Please try again later.');
+      });
+  });
+
+  const navLinks = document.querySelectorAll('.nav-header a');
+  const sections = document.querySelectorAll('.section');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      navLinks.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+
+      const target = this.getAttribute('data-target');
+      const targetSection = document.getElementById(target);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - document.querySelector('.header').offsetHeight,
+          behavior: 'smooth'
+        });
+      }
+
+      // Hide profile picture on other pages
+      const profileImg = document.querySelector('.profile-img');
+      if (target === 'home') {
+        profileImg.style.display = 'block';
+      } else {
+        profileImg.style.display = 'none';
+      }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#home').classList.add('active');
+    document.querySelector('[data-target="home"]').classList.add('active');
+    // Hide profile picture initially on load
+    const profileImg = document.querySelector('.profile-img');
+    if (!profileImg) {
+      return;
+    }
+    profileImg.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
