@@ -149,6 +149,12 @@
       margin-left: 2rem;
     }
 
+    .resume-button-container {
+      display: flex;
+      justify-content: center; /* Center the resume button */
+      margin-top: 2rem;
+    }
+
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -159,8 +165,7 @@
       text-decoration: none;
       border-radius: 25px;
       transition: background-color 0.3s, transform 0.3s;
-      margin-top: 2rem;
-      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      background: linear-gradient(45deg, #a46eb7, #bfa6e5, #f8a6a6, #fefefe);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
@@ -176,7 +181,7 @@
       display: flex;
       flex-direction: column;
       align-items: left; /* Align skill cards to the left */
-      margin-top: 2rem;
+      margin-top: 10rem; /* Increased margin-top to push down the skills section */
     }
 
     .skill-cards {
@@ -201,7 +206,7 @@
 
     .skill-card h3 {
       margin-top: 0;
-      color: #ff006f;
+      color: #f7f4f5;
     }
 
     .skill-card p {
@@ -264,50 +269,54 @@
       color: #ff8a00;
     }
 
-    .contact-form {
+    .certifications {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
+      margin-top: 2rem;
+    }
+
+    .certification-card {
+      background: #161515;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      flex: 1 1 calc(33.333% - 1rem); /* 3 cards per row with spacing */
+      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
+    }
+
+    .certification-card h3 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 1.25rem;
+    }
+
+    .certification-card p {
+      color: #ddd;
+      margin: 0;
+    }
+
+    .contact-info {
+      background: #161515;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
+      margin-top: 1rem;
       text-align: left;
     }
 
-    .contact-form label {
-      font-size: 1rem;
-      color: #fff;
+    .contact-info img {
+      width: 40px;
+      height: 40px;
+      margin-right: 0.5rem;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 5px;
-      border: none;
-      background: #333;
-      color: #fff;
-    }
-
-    .contact-form input[type="submit"] {
-      background: linear-gradient(45deg, #9d50bb, #6e48aa, #e8cdcd, #f8f8f8);
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .contact-form input[type="submit"]:hover {
-      background-color: #ff8a00;
-      transform: scale(1.05);
+    .contact-info p {
+      margin: 0.5rem 0;
+      color: #ddd;
     }
   </style>
-  <!-- Include EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script type="text/javascript">
-    (function() {
-      emailjs.init("ACVybv-LqsiWlMhus"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
-    })();
-  </script>
+ 
 </head>
 <body>
 
@@ -341,7 +350,9 @@
               <img src="./images/git.png" alt="GitHub">
             </a>
           </div>
-          <a href="https://sulonipraveen.github.io/SULONI%20PRAVEEN%20RESUME.pdf" target="_blank" class="button">View Resume</a>
+          <div class="resume-button-container">
+            <a href="https://sulonipraveen.github.io/SULONI%20PRAVEEN%20RESUME.pdf" target="_blank" class="button">View Resume</a>
+          </div>
         </div>
         <img src="./images/profilepic.jpeg" alt="Suloni Praveen" class="profile-img">
       </div>
@@ -431,57 +442,72 @@
     </div>
     <div class="section certifications" id="certifications">
       <h2>Certifications</h2>
-      <ul>
-        <li>Attended the Arduino Programming Workshop from Tequed Labs, Bangalore. (2019)</li>
-        <li>Microsoft Technology Associate certification in Introduction to Programming Using Python. (2020)</li>
-        <li>Programming for Everybody certification from the University of Michigan. (2020)</li>
-        <li>Crash Course on Data Science Certification from John Hopkins University. (2020)</li>
-        <li>Certified from IBM Skills Build on Data Structures. (2021)</li>
-        <li>RPA certification from Great Learning Platform. (2022)</li>
-        <li>Certified from UiPath Studio on Robotic Process Automation. (2022)</li>
-        <li>Building an AI certification from Udemy. (2022)</li>
-        <li>Big Data and AI certification from Great Learning Platform. (2022)</li>
-        <li>UI/UX certification from Great Learning Platform. (2022)</li>
-        <li>Visual Graphics certification from Great Learning Platform. (2022)</li>
-      </ul>
+      <div class="certifications">
+        <div class="certification-card">
+          <h3>Arduino Programming Workshop</h3>
+          <p>Tequed Labs, Bangalore (2019)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Introduction to Programming Using Python</h3>
+          <p>Microsoft Technology Associate certification (2020)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Programming for Everybody</h3>
+          <p>University of Michigan (2020)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Crash Course on Data Science</h3>
+          <p>John Hopkins University (2020)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Data Structures</h3>
+          <p>IBM Skills Build (2021)</p>
+        </div>
+        <div class="certification-card">
+          <h3>RPA Certification</h3>
+          <p>Great Learning Platform (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Robotic Process Automation</h3>
+          <p>UiPath Studio (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Building an AI</h3>
+          <p>Udemy (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Big Data and AI</h3>
+          <p>Great Learning Platform (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>UI/UX</h3>
+          <p>Great Learning Platform (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Visual Graphics</h3>
+          <p>Great Learning Platform (2022)</p>
+        </div>
+        <div class="certification-card">
+          <h3>Full Stack Development</h3>
+          <p>Udemy (2024)</p>
+        </div>
+      </div>
     </div>
     <div class="section contact" id="contact">
       <h2>Contact Me</h2>
-      <div class="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        
-        <input type="submit" value="Submit">
+      
+      <div class="contact-info">
+        <p><img src="./images/mail.jpg" alt="Email"> sulonipr@usc.edu</p>
+        <p><img src="./images/phone.jpg" alt="Phone"> (+1) 213-681-4078</p>
+        <p><img src="./images/grad.jpg" alt="University"> University of Southern California</p>
+        <p><img src="./images/loc.png" alt="Location"> Los Angeles, CA</p>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // Initialize EmailJS
-  (function() {
-    emailjs.init("ACVybv-LqsiWlMhus"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
-  })();
-
-  // Handle form submission
-  document.querySelector('.contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    emailjs.sendForm('service_yjmq8u4', 'template_rdbutte', this)
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Message sent successfully!');
-      }, function(error) {
-        console.log('FAILED...', error);
-        alert('Failed to send message. Please try again later.');
-      });
-  });
+  
 
   const navLinks = document.querySelectorAll('.nav-header a');
   const sections = document.querySelectorAll('.section');
