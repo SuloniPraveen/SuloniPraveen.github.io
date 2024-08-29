@@ -1,1 +1,1 @@
-# SuloniPraveen.github.io
+# suloni.github.io
