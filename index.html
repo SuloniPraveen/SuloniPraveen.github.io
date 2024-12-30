@@ -1,128 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suloni Praveen's Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <style>
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
       background: url('./images/galaxy.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #ddd;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .container {
-      display: flex;
-      width: 100%;
-      flex-grow: 1;
-      justify-content: left;
-      align-items: flex-start;
-    }
-
-    .main-content {
-      padding: 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: left; /* Align content to the left */
     }
 
     .header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: left;
-      padding: 1rem 2rem;
-      background: #000;
-      color: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
       position: fixed;
       top: 0;
-      z-index: 1000;
-      margin-left: -1rem; /* Shift header slightly to the left */
-    }
-
-    .header .name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fff;
-      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-header {
-      display: flex;
-      gap: 1.5rem;
-      margin-left: -1rem; /* Shift navigation slightly to the left */
-    }
-
-    .nav-header a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: transform 0.3s;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      background: linear-gradient(45deg, #b893c6, #bfa6e5, #f8a6a6, #f84f31);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-header a:hover,
-    .nav-header a.active {
-      transform: scale(1.1); /* Increase text size on hover */
-    }
-
-    .section {
-      color: #fff;
-      padding: 2rem;
       width: 100%;
-      max-width: 1200px;
-      margin-bottom: 2rem;
-      text-align: left;
-      margin-top: 8rem;
+      z-index: 1000;
+      padding: 15px 30px;
     }
 
-    .section.active {
-      opacity: 1;
+    .header .nav-link {
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+    }
+
+    .header .nav-link:hover,
+    .header .nav-link.active {
+      color: #f84f31;
+    }
+
+    .main-content {
+      padding-top: 100px;
     }
 
     .section h2 {
-      margin-top: 0;
       color: #fff;
       font-size: 2rem;
       font-weight: 600;
-      text-align: left;
-    }
-
-    .section h2::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 4px;
-      background: #fff;
-      margin-top: 10px;
     }
 
     .section p {
       color: #ccc;
     }
 
-    .icon-links {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center; /* Center the icons */
-      gap: 1rem;
+    .profile-img {
+      width: 250px;
+      border-radius: 10px;
+      border: 4px solid #000;
+      margin: 20px 0;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background: #f84f31;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 25px;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: #ff8a00;
     }
 
     .icon-links a img {
@@ -131,224 +78,74 @@
       transition: transform 0.3s;
     }
 
-    .icon-links a:hover img,
-    .icon-links a:focus img {
+    .icon-links a:hover img {
       transform: scale(1.1);
     }
 
-    .profile-container {
-      display: flex;
-      align-items: flex-start;
-      justify-content: left; /* Align the profile container to the left */
-    }
-
-    .profile-img {
-      width: 250px;
-      height: auto;
-      border: 4px solid #000; /* Black border added */
-      margin-left: 2rem;
-    }
-
-    .resume-button-container {
-      display: flex;
-      justify-content: center; /* Center the resume button */
-      margin-top: 2rem;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #000;
-      background-color: #fff;
-      text-decoration: none;
-      border-radius: 25px;
-      transition: background-color 0.3s, transform 0.3s;
-      background: linear-gradient(45deg, #a46eb7, #bfa6e5, #f8a6a6, #fefefe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .skill-card, .project-card, .research-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 20px;
+      color: #fff;
       text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .button:hover {
-      background-color: #ff8a00;
-      color: #fff;
+    .skill-card:hover, .project-card:hover, .research-card:hover {
       transform: scale(1.05);
-    }
-
-    .skills {
-      display: flex;
-      flex-direction: column;
-      align-items: left; /* Align skill cards to the left */
-      margin-top: 5rem; /* Reduced margin-top */
-    }
-
-    .skill-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      justify-content: center; /* Center the skill cards */
-      margin-top: 2rem;
-    }
-
-    .skill-card {
-      background: #161515;
-      color: #fff;
-      padding: 1.5rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center the content within skill cards */
-      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
-    }
-
-    .skill-card h3 {
-      margin-top: 0;
-      color: #f7f4f5;
-    }
-
-    .skill-card p {
-      color: #ddd;
-      margin: 0;
-      text-align: center; /* Center align the text */
+      box-shadow: 0 8px 16px rgba(255, 20, 147, 0.8);
     }
 
     .project-grid, .research-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      justify-content: center;
-    }
-
-    .project-card, .research-card {
-      background: #161515;
-      color: #fff;
-      padding: 1rem;
-      border-radius: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);/* Pink shading */
-      height: 400px; /* Set a fixed height for uniformity */
-    }
-
-    .project-card:hover, .research-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(255, 20, 147, 0.9); /* Darker pink shadow on hover */
-    }
-
-    .project-card img, .research-card img {
-      width: 100%;
-      height: 200px; /* Fixed height for uniformity */
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      object-fit: cover; /* Ensure image covers the area without distortion */
-    }
-
-    .project-card h3, .research-card h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      text-align: center; /* Center-align text */
-    }
-
-    .project-card p, .research-card p {
-      margin: 0;
-      font-size: 1rem;
-      color: #aaa;
-      text-align: center; /* Center-align text */
-    }
-
-    .project-card span, .research-card span {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #ff8a00;
-    }
-
-    .certifications {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
       margin-top: 2rem;
     }
 
-    .certification-card {
-      background: #161515;
-      color: #fff;
-      padding: 1rem;
+    .certifications .certification-card {
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
-      flex: 1 1 calc(33.333% - 1rem); /* 3 cards per row with spacing */
-      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
-    }
-
-    .certification-card h3 {
-      margin-top: 0;
-      color: #ffffff;
-      font-size: 1.25rem;
-    }
-
-    .certification-card p {
-      color: #ddd;
-      margin: 0;
+      padding: 15px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .contact-info {
-      background: #161515;
-      padding: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(221, 124, 248, 0.7);
-      margin-top: 1rem;
-      text-align: left;
-      display: flex; /* Added flexbox */
-      flex-direction: column; /* Vertical stacking */
-      gap: 1rem; /* Space between items */
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-top: 2rem;
     }
-
-    .contact-info p {
-      margin: 0.5rem 0;
-      color: #ddd;
-      display: flex; /* Added flexbox */
-      align-items: center; /* Center vertically */
-    }
-
-    .contact-info img {
-      width: 40px;
-      height: 40px;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem; /* Moved images slightly down */
-    }
-
   </style>
- 
+
 </head>
+
 <body>
 
-<div class="header">
-  <div class="name">Suloni Praveen</div>
-  <div class="nav-header">
-    <a href="#home" class="active" data-target="home">About</a>
-    <a href="#skills" data-target="skills">Skills</a>
-    <a href="#projects" data-target="projects">Projects</a>
-    <a href="#research" data-target="research">Research</a>
-    <a href="#certifications" data-target="certifications">Certifications</a>
-    <a href="#contact" data-target="contact">Contact</a>
+  <div class="header">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="name h3">Suloni Praveen</div>
+      <nav class="nav">
+        <a class="nav-link active" href="#home" data-target="home">About</a>
+        <a class="nav-link" href="#skills" data-target="skills">Skills</a>
+        <a class="nav-link" href="#projects" data-target="projects">Projects</a>
+        <a class="nav-link" href="#research" data-target="research">Research</a>
+        <a class="nav-link" href="#certifications" data-target="certifications">Certifications</a>
+        <a class="nav-link" href="#contact" data-target="contact">Contact</a>
+      </nav>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="main-content">
-    <div class="section about-me active" id="home">
-      <div class="profile-container">
-        <div>
-          <h2>About Me</h2>
-          <p>Hi everyone! My name is Suloni Praveen and I am a passionate Software Developer and Machine Learning enthusiast. I am currently pursuing my Master's in Computer Science at the University of Southern California. I thrive on solving complex problems and turning them into innovative solutions.</p> 
-          <p>🌟 From crafting dynamic web applications to building smart machine learning models, I'm always eager to learn new things and push the boundaries of what's possible.</p>
-          <p>Leadership and teamwork are at the heart of my work ethics. Whether leading a project or collaborating with a team, I believe in the power of individual and collective efforts to achieve remarkable results. Let's connect and create something amazing together!💻</p>
-          
+  <div class="container main-content">
+    <div class="section" id="home">
+      <h2>About Me</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Hi! I'm Suloni Praveen, a passionate Software Developer and Machine Learning enthusiast pursuing my Master's in Computer Science at USC. I thrive on solving complex problems and turning them into innovative solutions. Let's connect and create something amazing!</p>
           <div class="icon-links">
             <a href="https://www.linkedin.com/in/suloni-praveen-484814217/" target="_blank">
               <img src="./images/linkedin.png.webp" alt="LinkedIn">
@@ -357,152 +154,109 @@
               <img src="./images/git.png" alt="GitHub">
             </a>
           </div>
-          <div class="resume-button-container">
+          <div class="mt-3">
             <a href="https://sulonipraveen.github.io/SULONI%20PRAVEEN%20RESUME.pdf" target="_blank" class="button">View Resume</a>
           </div>
         </div>
-        <img src="./images/profilepic.jpeg" alt="Suloni Praveen" class="profile-img">
+        <div class="col-md-6 text-center">
+          <img src="./images/profilepic.jpeg" alt="Suloni Praveen" class="profile-img">
+        </div>
       </div>
     </div>
 
-    <div class="section skills" id="skills">
+    <div class="section" id="skills">
       <h2>Skills</h2>
-      <div class="skill-cards">
-        <div class="skill-card">
-          <h3>Programming</h3>
-          <p>Python, C, C++, Java, JavaScript, TypeScript, SQL</p>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="skill-card">
+            <h3>Programming</h3>
+            <p>Python, C++, Java, JavaScript, TypeScript, SQL</p>
+          </div>
         </div>
-        <div class="skill-card">
-          <h3>Web Development</h3>
-          <p>HTML, CSS, React, Node, React Native, Swift, PHP, JSON, Bootstrap, AWS</p>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <h3>Web Development</h3>
+            <p>HTML, CSS, React, Node.js, React Native, Swift, PHP, Bootstrap, AWS</p>
+          </div>
         </div>
-        <div class="skill-card">
-          <h3>Machine Learning</h3>
-          <p>NLP, TensorFlow, Scikit-Learn, Keras, Pandas, Matplotlib, NumPy, PyTorch</p>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <h3>Machine Learning</h3>
+            <p>NLP, TensorFlow, Scikit-Learn, Keras, Pandas, Matplotlib, NumPy, PyTorch</p>
+          </div>
         </div>
-        <div class="skill-card">
-          <h3>Research</h3>
-          <p>Data Analysis, Scientific Writing, Experimental Design</p>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <h3>Research</h3>
+            <p>Data Analysis, Scientific Writing, Experimental Design</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="section projects" id="projects">
+    <div class="section" id="projects">
       <h2>Projects</h2>
       <div class="project-grid">
-        <a href="https://github.com/SuloniPraveen/Sequence-Alignment_Memory-Efficient-Version" target="_blank" class="project-card">
+        <div class="project-card">
           <img src="./images/sequence.png" alt="Sequence">
           <h3>Sequence Alignment Project</h3>
           <p>DSA</p>
-        </a>
-        <a href="https://github.com/SuloniPraveen/Okra_Disease_Detection_Using_Deep-Learning" target="_blank" class="project-card">
+        </div>
+        <div class="project-card">
           <img src="./images/okra.jpeg" alt="Okra">
           <h3>Okra Disease Detection System</h3>
           <p>Machine Learning</p>
-        </a>
-        <a href="https://sulonipraveen.github.io/Used%20Phone%20Price%20Prediction.pdf" target="_blank" class="project-card">
+        </div>
+        <div class="project-card">
           <img src="./images/smartphone.png" alt="Smart Phone">
           <h3>Used Smart Phone Price Prediction System</h3>
           <p>Artificial Intelligence and Machine Learning</p>
-        </a>
-        <a href="https://github.com/SuloniPraveen/https---github.com-CoachEd03-VVCE-backend-tree-meals" target="_blank" class="project-card">
-          <img src="./images/restaurant.png" alt="Restaurant">
-          <h3>Restaurant Management System</h3>
-          <p>Web Development</p>
-        </a>
-        <a href="https://github.com/Sulonipraveen/Crime-Record-Management-System" target="_blank" class="project-card">
-          <img src="./images/crimerecord.png" alt="Crime">
-          <h3>Crime Record Management System</h3>
-          <p>Web Development</p>
-        </a>
-        <a href="https://github.com/SuloniPraveen/Medicine_Reminder_Application" target="_blank" class="project-card">
-          <img src="./images/medtime.jpg" alt="MedTime">
-          <h3>Medicine Reminder Application</h3>
-          <p>App Development</p>
-        </a>
-        <a href="https://github.com/SuloniPraveen/Breadth_First_Search_OpenGL" target="_blank" class="project-card">
-          <img src="./images/bfs.jpg" alt="BFS">
-          <h3>BFS Algorithm</h3>
-          <p>Computer Graphics and DSA</p>
-        </a>
+        </div>
       </div>
     </div>
-    <div class="section research" id="research">
+
+    <div class="section" id="research">
       <h2>Research</h2>
       <div class="research-grid">
-        <a href="https://sulonipraveen.github.io/Cotton%20Plant%20Disease%20Detection%20Research%20Paper.pdf" target="_blank" class="research-card">
+        <div class="research-card">
           <img src="./images/cotton.jpg" alt="Research 1">
           <h3>Cotton Plant Disease Detection Research Paper</h3>
           <p>Machine Learning and Deep Learning</p>
-        </a>
-<!--         <a href="https://sulonipraveen.github.io/Okra%20Disease%20Detection%20Research%20Paper.pdf" target="_blank" class="research-card">
-          <img src="./images/okraLeaves.jpg" alt="Research 2">
-          <h3>Okra Plant Disease Detection Research Paper</h3>
-          <p>Machine Learning and Deep Learning</p>
-        </a> -->
-        <a href="https://sulonipraveen.github.io/Sentiment%20Analysis%20Review%20Paper.pdf" target="_blank" class="research-card">
+        </div>
+        <div class="research-card">
           <img src="./images/sentiment.webp" alt="Research 3">
           <h3>Sentiment Analysis Review Paper</h3>
           <p>Machine Learning and NLP</p>
-        </a>
+        </div>
       </div>
     </div>
-    <div class="section certifications" id="certifications">
+
+    <div class="section" id="certifications">
       <h2>Certifications</h2>
-      <div class="certifications">
-        <div class="certification-card">
-          <h3>Arduino Programming Workshop</h3>
-          <p>Tequed Labs, Bangalore (2019)</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="certification-card">
+            <h3>Introduction to Python</h3>
+            <p>Microsoft (2020)</p>
+          </div>
         </div>
-        <div class="certification-card">
-          <h3>Introduction to Programming Using Python</h3>
-          <p>Microsoft Technology Associate certification (2020)</p>
+        <div class="col-md-4">
+          <div class="certification-card">
+            <h3>Programming for Everybody</h3>
+            <p>University of Michigan (2020)</p>
+          </div>
         </div>
-        <div class="certification-card">
-          <h3>Programming for Everybody</h3>
-          <p>University of Michigan (2020)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Crash Course on Data Science</h3>
-          <p>John Hopkins University (2020)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Data Structures</h3>
-          <p>IBM Skills Build (2021)</p>
-        </div>
-        <div class="certification-card">
-          <h3>RPA Certification</h3>
-          <p>Great Learning Platform (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Robotic Process Automation</h3>
-          <p>UiPath Studio (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Building an AI</h3>
-          <p>Udemy (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Big Data and AI</h3>
-          <p>Great Learning Platform (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>UI/UX</h3>
-          <p>Great Learning Platform (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Visual Graphics</h3>
-          <p>Great Learning Platform (2022)</p>
-        </div>
-        <div class="certification-card">
-          <h3>Full Stack Development</h3>
-          <p>Udemy (2024)</p>
+        <div class="col-md-4">
+          <div class="certification-card">
+            <h3>Data Structures</h3>
+            <p>IBM Skills Build (2021)</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="section contact" id="contact">
+
+    <div class="section" id="contact">
       <h2>Contact Me</h2>
-      
       <div class="contact-info">
         <p><img src="./images/mail.jpg" alt="Email"> sulonipr@usc.edu</p>
         <p><img src="./images/phone.jpg" alt="Phone"> (+1) 213-681-4078</p>
@@ -511,48 +265,10 @@
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  const navLinks = document.querySelectorAll('.nav-header a');
-  const sections = document.querySelectorAll('.section');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      navLinks.forEach(nav => nav.classList.remove('active'));
-      this.classList.add('active');
-
-      const target = this.getAttribute('data-target');
-      const targetSection = document.getElementById(target);
-      if (targetSection) {
-        window.scrollTo({
-          top: targetSection.offsetTop - document.querySelector('.header').offsetHeight - 20, // Adjusted scroll position
-          behavior: 'smooth'
-        });
-      }
-
-      // Hide profile picture on other pages
-      const profileImg = document.querySelector('.profile-img');
-      if (target === 'home') {
-        profileImg.style.display = 'block';
-      } else {
-        profileImg.style.display = 'none';
-      }
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('#home').classList.add('active');
-    document.querySelector('[data-target="home"]').classList.add('active');
-    // Hide profile picture initially on load
-    const profileImg = document.querySelector('.profile-img');
-    if (!profileImg) {
-      return;
-    }
-    profileImg.style.display = 'block';
-  });
-</script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
