@@ -57,6 +57,78 @@
       50% { transform: scale(1.1) rotate(180deg); }
     }
 
+    @keyframes slideInFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInFromBottom {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(5deg); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
     /* Header */
     .header {
       position: fixed;
@@ -185,6 +257,18 @@
       font-weight: 500;
     }
 
+    .hero-content .catchy-intro {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.4;
+    }
+
     .hero-content p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
@@ -247,11 +331,6 @@
       animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
     /* Section Headers */
     .section-header {
       text-align: center;
@@ -290,6 +369,8 @@
       text-align: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(50px);
     }
 
     .skill-card:hover {
@@ -316,6 +397,443 @@
     .skill-card p {
       color: var(--text-secondary);
       line-height: 1.8;
+    }
+
+    /* Work Experience Timeline */
+    .experience-categories {
+      margin-bottom: 4rem;
+    }
+
+    .category-header {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .category-header h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-header p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .experience-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--primary-gradient);
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: drawTimeline 2s ease-out forwards;
+    }
+
+    @keyframes drawTimeline {
+      0% {
+        height: 0;
+      }
+      100% {
+        height: 100%;
+      }
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 4rem;
+      width: 50%;
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 3rem;
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 3rem;
+      transform: translateX(100px);
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.5s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.8s; }
+    .timeline-item:nth-child(3) { animation-delay: 1.1s; }
+    .timeline-item:nth-child(4) { animation-delay: 1.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 1.7s; }
+
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-gradient);
+      border: 4px solid var(--dark-bg);
+      border-radius: 50%;
+      z-index: 2;
+      animation: pulseTimeline 2s ease-in-out infinite;
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -13px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -13px;
+    }
+
+    @keyframes pulseTimeline {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 172, 254, 0.7);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(79, 172, 254, 0);
+      }
+    }
+
+    .experience-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(79, 172, 254, 0.5);
+    }
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .company-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 700;
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    .company-info h3 {
+      color: var(--text-accent);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .company-info .company {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .experience-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .duration {
+      background: rgba(102, 126, 234, 0.2);
+      color: var(--text-accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .location {
+      background: rgba(245, 87, 108, 0.2);
+      color: #f5576c;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .work-type {
+      background: rgba(79, 172, 254, 0.2);
+      color: var(--text-accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .description ul {
+      margin: 0.5rem 0;
+      padding-left: 1rem;
+    }
+
+    .description li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Education Timeline */
+    .education-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .education-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--secondary-gradient);
+      transform: translateX(-50%);
+      border-radius: 2px;
+      animation: drawEducationTimeline 1.5s ease-out forwards;
+    }
+
+    @keyframes drawEducationTimeline {
+      0% {
+        height: 0;
+      }
+      100% {
+        height: 100%;
+      }
+    }
+
+    .education-item {
+      position: relative;
+      margin-bottom: 4rem;
+      width: 50%;
+      opacity: 0;
+    }
+
+    .education-item:nth-child(1) {
+      left: 0;
+      padding-right: 3rem;
+      transform: translateX(-100px);
+      animation: slideInEducationLeft 1s ease-out forwards 0.5s;
+    }
+
+    .education-item:nth-child(2) {
+      left: 50%;
+      padding-left: 3rem;
+      transform: translateX(100px);
+      animation: slideInEducationRight 1s ease-out forwards 1s;
+    }
+
+    @keyframes slideInEducationLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInEducationRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .education-item::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 24px;
+      height: 24px;
+      background: var(--secondary-gradient);
+      border: 4px solid var(--dark-bg);
+      border-radius: 50%;
+      z-index: 2;
+      animation: pulseEducation 2.5s ease-in-out infinite;
+    }
+
+    .education-item:nth-child(1)::before {
+      right: -15px;
+    }
+
+    .education-item:nth-child(2)::before {
+      left: -15px;
+    }
+
+    @keyframes pulseEducation {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7);
+      }
+      50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 12px rgba(245, 87, 108, 0);
+      }
+    }
+
+    .education-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .education-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--secondary-gradient);
+    }
+
+    .education-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(245, 87, 108, 0.5);
+    }
+
+    .education-card .icon {
+      font-size: 3rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: educationIconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes educationIconFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(10deg);
+      }
+    }
+
+    .education-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .education-card .degree {
+      color: var(--text-accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-card .university {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-card .duration {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .education-card .gpa {
+      background: rgba(79, 172, 254, 0.2);
+      color: var(--text-accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-block;
     }
 
     /* Projects Grid */
@@ -399,6 +917,8 @@
       color: inherit;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateX(-50px);
     }
 
     .research-card:hover {
@@ -430,6 +950,8 @@
       padding: 1.5rem;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateX(50px);
     }
 
     .certification-card:hover {
@@ -465,6 +987,8 @@
       text-align: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: scale(0.3);
     }
 
     .contact-card:hover {
@@ -565,6 +1089,14 @@
       .contact-grid {
         grid-template-columns: 1fr;
       }
+
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -618,6 +1150,8 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#home" class="nav-link active">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#research" class="nav-link">Research</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
@@ -638,8 +1172,9 @@
       <div class="hero">
         <div class="hero-content">
           <h1>Hi, I'm Suloni Praveen</h1>
-          <p class="subtitle">Software Developer & ML Enthusiast</p>
-          <p>I'm a passionate Software Developer and Machine Learning enthusiast currently pursuing my Master's in Computer Science at USC. I thrive on solving complex problems and turning them into innovative solutions.</p>
+          <p class="subtitle">Machine Learning Engineer & Full-Stack Developer</p>
+          <p class="catchy-intro">🚀 Where algorithms meet innovation! I transform complex data into intelligent solutions while crafting seamless digital experiences.</p>
+          <p>I'm a passionate Machine Learning Engineer and Full-Stack Developer currently pursuing my Master's in Computer Science at USC. I thrive on solving complex problems and turning them into innovative solutions.</p>
           <p>From crafting dynamic web applications to building smart machine learning models, I'm always eager to learn new things and push the boundaries of what's possible. Leadership and teamwork are at the heart of my work ethics.</p>
           
           <div class="social-links">
@@ -686,6 +1221,358 @@
           <div class="icon"><i class="fas fa-flask"></i></div>
           <h3>Research</h3>
           <p>Data Analysis, Scientific Writing, Experimental Design</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2>Work Experience</h2>
+        <p>My professional journey and contributions</p>
+      </div>
+      
+      <div class="experience-categories">
+        <!-- Machine Learning Experience -->
+        <div class="category-header">
+          <h3><i class="fas fa-brain"></i> Machine Learning Engineering</h3>
+          <p>Building intelligent systems and AI-powered solutions</p>
+        </div>
+        
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="company-header">
+                <div class="company-logo">Q</div>
+                <div class="company-info">
+                  <h3>Machine Learning Engineer</h3>
+                  <div class="company">Qualtrics</div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span class="duration">Jun 2025 - Present</span>
+                <span class="location">Provo, Utah</span>
+                <span class="work-type">Internship</span>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>Design, train, and deploy standalone text classifier to categorize complete vs. incomplete survey responses for real-time response clarity feature</li>
+                  <li>Create training pipelines and data preprocessing workflows for response quality assessment</li>
+                  <li>Build complete backend APIs and frontend components to transform response clarity from post-navigation to real-time inline prompting</li>
+                  <li>Enable multiple AI-generated suggestions during active typing while preserving survey author control</li>
+                  <li>Enhance user experience by maintaining question context and respondent motivation through seamless single-page interaction</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="company-header">
+                <div class="company-logo">IT</div>
+                <div class="company-info">
+                  <h3>Machine Learning Engineer</h3>
+                  <div class="company">Inventeron Technologies</div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span class="duration">Jun 2023 - Oct 2023</span>
+                <span class="location">Bangalore, India</span>
+                <span class="work-type">Internship</span>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>Implemented deep learning architectures specifically designed for cardiovascular disease detection from medical images</li>
+                  <li>Applied cutting-edge machine learning methodologies to address critical healthcare challenges in early disease detection</li>
+                  <li>Engineered scalable CNN architectures optimized for medical image classification tasks</li>
+                  <li>Designed robust preprocessing pipelines for medical image data, including noise reduction and feature enhancement techniques</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="company-header">
+                <div class="company-logo">USC</div>
+                <div class="company-info">
+                  <h3>Research Assistant</h3>
+                  <div class="company">USC Viterbi School of Engineering</div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span class="duration">May 2024 - Dec 2024</span>
+                <span class="location">Los Angeles, CA</span>
+                <span class="work-type">Research</span>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>Investigated oxygen retention as a biomarker for vascular diseases affecting the eye, including diabetic retinopathy</li>
+                  <li>Conducted comparative studies on oxygen consumption rates in healthy versus diseased retinas</li>
+                  <li>Collaborated with ophthalmologists to validate diagnostic tools for early disease intervention</li>
+                  <li>Developed statistical models in Python to predict disease onset based on oxygen retention patterns</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Development Experience -->
+        <div class="category-header">
+          <h3><i class="fas fa-code"></i> Software Development</h3>
+          <p>Creating robust applications and scalable solutions</p>
+        </div>
+        
+        <div class="experience-timeline">
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="company-header">
+                <div class="company-logo">S</div>
+                <div class="company-info">
+                  <h3>Software Engineer</h3>
+                  <div class="company">Sara</div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span class="duration">Jun 2024 - Jul 2024</span>
+                <span class="location">Marina del Rey, CA</span>
+                <span class="work-type">Internship</span>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>Spearheaded the development of the Speech Articulation Reinforcement Application homepage</li>
+                  <li>Built modular React Native components for reusable speech therapy modules and exercises</li>
+                  <li>Established efficient state management patterns to handle real-time speech data and user progress tracking</li>
+                  <li>Implemented cross-platform mobile solutions ensuring consistent performance across iOS and Android devices</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="experience-card">
+              <div class="company-header">
+                <div class="company-logo">CE</div>
+                <div class="company-info">
+                  <h3>Backend Developer</h3>
+                  <div class="company">CoachEd</div>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <span class="duration">Sep 2022 - Oct 2022</span>
+                <span class="location">Mysore, India</span>
+                <span class="work-type">Internship</span>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>Implemented real-time order tracking and inventory management features that significantly improved operational productivity</li>
+                  <li>Developed a Restaurant Management System leveraging the MERN stack (MongoDB, Express.js, React, Node.js)</li>
+                  <li>Implemented NoSQL database architecture using MongoDB for flexible data modeling and efficient handling of restaurant operations data</li>
+                  <li>Designed RESTful APIs using Node.js and Express.js to handle real-time order processing, inventory tracking, and customer management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <h2>Education</h2>
+        <p>Academic foundation and continuous learning</p>
+      </div>
+      <div class="education-timeline">
+        <div class="education-item">
+          <div class="education-card">
+            <div class="icon"><i class="fas fa-university"></i></div>
+            <h3>University of Southern California</h3>
+            <div class="degree">Master of Science in Computer Science</div>
+            <div class="university">USC Viterbi School of Engineering</div>
+            <div class="duration">Jan 2024 - Dec 2025</div>
+            <div class="gpa">GPA: 3.78/4.0</div>
+            <div class="achievements">
+              <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+                <strong>Achievements:</strong><br>
+                • Selected for prestigious Summer Smasher Program 2024<br>
+                • Research Assistant under Prof. Anita Penkova<br>
+                • Coursework: Analysis of Algorithms, DBMS, Web Technologies, Information Retrieval, Machine Learning, Deep Learning
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="education-item">
+          <div class="education-card">
+            <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Vidyavardhaka College of Engineering</h3>
+            <div class="degree">Bachelor of Engineering in Computer Science</div>
+            <div class="university">Mysore, Karnataka, India</div>
+            <div class="duration">2019 - 2023</div>
+            <div class="gpa">CGPA: 9.16/10.0</div>
+            <div class="achievements">
+              <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+                <strong>Achievements:</strong><br>
+                • Member of OSL, IEEE Society, Google Developers Club<br>
+                • 2nd Place in Ideathon Competition<br>
+                • Top 30 in National IEEE Ideathon Competition
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>time response clarity feature</li>
+                <li>Create training pipelines and data preprocessing workflows for response quality assessment</li>
+                <li>Build complete backend APIs and frontend components to transform response clarity from post-navigation to real-time inline prompting</li>
+                <li>Enable multiple AI-generated suggestions during active typing while preserving survey author control</li>
+                <li>Enhance user experience by maintaining question context and respondent motivation through seamless single-page interaction</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="company-header">
+              <div class="company-logo">IT</div>
+              <div class="company-info">
+                <h3>Machine Learning Engineer</h3>
+                <div class="company">Inventeron Technologies</div>
+              </div>
+            </div>
+            <div class="experience-meta">
+              <span class="duration">Jun 2023 - Oct 2023</span>
+              <span class="location">Bangalore, India</span>
+              <span class="work-type">Internship</span>
+            </div>
+            <div class="description">
+              <ul>
+                <li>Implemented deep learning architectures specifically designed for cardiovascular disease detection from medical images</li>
+                <li>Applied cutting-edge machine learning methodologies to address critical healthcare challenges in early disease detection</li>
+                <li>Engineered scalable CNN architectures optimized for medical image classification tasks</li>
+                <li>Designed robust preprocessing pipelines for medical image data, including noise reduction and feature enhancement techniques</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="company-header">
+              <div class="company-logo">USC</div>
+              <div class="company-info">
+                <h3>Research Assistant</h3>
+                <div class="company">USC Viterbi School of Engineering</div>
+              </div>
+            </div>
+            <div class="experience-meta">
+              <span class="duration">May 2024 - Dec 2024</span>
+              <span class="location">Los Angeles, CA</span>
+              <span class="work-type">Research</span>
+            </div>
+            <div class="description">
+              <ul>
+                <li>Investigated oxygen retention as a biomarker for vascular diseases affecting the eye, including diabetic retinopathy</li>
+                <li>Conducted comparative studies on oxygen consumption rates in healthy versus diseased retinas</li>
+                <li>Collaborated with ophthalmologists to validate diagnostic tools for early disease intervention</li>
+                <li>Developed statistical models in Python to predict disease onset based on oxygen retention patterns</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Development Experience -->
+        <div class="category-header">
+          <h3><i class="fas fa-code"></i> Software Development</h3>
+          <p>Creating robust applications and scalable solutions</p>
+        </div>
+        
+        <div class="experience-grid sd-grid">
+          <div class="experience-card">
+            <div class="company-header">
+              <div class="company-logo">S</div>
+              <div class="company-info">
+                <h3>Software Engineer</h3>
+                <div class="company">Sara</div>
+              </div>
+            </div>
+            <div class="experience-meta">
+              <span class="duration">Jun 2024 - Jul 2024</span>
+              <span class="location">Marina del Rey, CA</span>
+              <span class="work-type">Internship</span>
+            </div>
+            <div class="description">
+              <ul>
+                <li>Spearheaded the development of the Speech Articulation Reinforcement Application homepage</li>
+                <li>Built modular React Native components for reusable speech therapy modules and exercises</li>
+                <li>Established efficient state management patterns to handle real-time speech data and user progress tracking</li>
+                <li>Implemented cross-platform mobile solutions ensuring consistent performance across iOS and Android devices</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="company-header">
+              <div class="company-logo">CE</div>
+              <div class="company-info">
+                <h3>Backend Developer</h3>
+                <div class="company">CoachEd</div>
+              </div>
+            </div>
+            <div class="experience-meta">
+              <span class="duration">Sep 2022 - Oct 2022</span>
+              <span class="location">Mysore, India</span>
+              <span class="work-type">Internship</span>
+            </div>
+            <div class="description">
+              <ul>
+                <li>Implemented real-time order tracking and inventory management features that significantly improved operational productivity</li>
+                <li>Developed a Restaurant Management System leveraging the MERN stack (MongoDB, Express.js, React, Node.js)</li>
+                <li>Implemented NoSQL database architecture using MongoDB for flexible data modeling and efficient handling of restaurant operations data</li>
+                <li>Designed RESTful APIs using Node.js and Express.js to handle real-time order processing, inventory tracking, and customer management</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <h2>Education</h2>
+        <p>Academic foundation and continuous learning</p>
+      </div>
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="icon"><i class="fas fa-university"></i></div>
+          <h3>University of Southern California</h3>
+          <div class="degree">Master of Science in Computer Science</div>
+          <div class="university">USC Viterbi School of Engineering</div>
+          <div class="duration">Jan 2024 - Dec 2025</div>
+          <div class="gpa">GPA: 3.78/4.0</div>
+          <div class="achievements">
+            <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+              <strong>Achievements:</strong><br>
+              • Selected for prestigious Summer Smasher Program 2024<br>
+              • Research Assistant under Prof. Anita Penkova<br>
+              • Coursework: Analysis of Algorithms, DBMS, Web Technologies, Information Retrieval, Machine Learning, Deep Learning
+            </p>
+          </div>
+        </div>
+        
+        <div class="education-card">
+          <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Vidyavardhaka College of Engineering</h3>
+          <div class="degree">Bachelor of Engineering in Computer Science</div>
+          <div class="university">Mysore, Karnataka, India</div>
+          <div class="duration">2019 - 2023</div>
+          <div class="gpa">CGPA: 9.16/10.0</div>
+          <div class="achievements">
+            <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+              <strong>Achievements:</strong><br>
+              • Member of OSL, IEEE Society, Google Developers Club<br>
+              • 2nd Place in Ideathon Competition<br>
+              • Top 30 in National IEEE Ideathon Competition
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -945,26 +1832,51 @@
       });
     });
 
-    // Intersection Observer for animations
+    // Enhanced Intersection Observer for animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          // Add specific animations based on element type
+          if (entry.target.classList.contains('skill-card')) {
+            entry.target.style.animation = `slideInFromBottom 0.6s ease-out forwards ${index * 0.1}s`;
+          }
+          if (entry.target.classList.contains('experience-card')) {
+            if (entry.target.parentElement.classList.contains('ml-grid')) {
+              entry.target.style.animation = `slideInFromLeft 0.8s ease-out forwards ${index * 0.2}s`;
+            } else {
+              entry.target.style.animation = `slideInFromRight 0.8s ease-out forwards ${index * 0.2}s`;
+            }
+          }
+          if (entry.target.classList.contains('education-card')) {
+            entry.target.style.animation = `bounceIn 1s ease-out forwards ${index * 0.3}s`;
+          }
+          if (entry.target.classList.contains('project-card')) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+          if (entry.target.classList.contains('research-card')) {
+            entry.target.style.animation = `slideInFromLeft 0.8s ease-out forwards ${index * 0.2}s`;
+          }
+          if (entry.target.classList.contains('certification-card')) {
+            entry.target.style.animation = `slideInFromRight 0.6s ease-out forwards ${index * 0.1}s`;
+          }
+          if (entry.target.classList.contains('contact-card')) {
+            entry.target.style.animation = `bounceIn 0.8s ease-out forwards ${index * 0.2}s`;
+          }
         }
       });
     }, observerOptions);
 
     // Observe all cards for animation
-    document.querySelectorAll('.skill-card, .project-card, .research-card, .certification-card, .contact-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    document.querySelectorAll('.skill-card, .project-card, .research-card, .certification-card, .contact-card, .experience-card, .education-card').forEach(card => {
+      if (!card.classList.contains('project-card')) {
+        // Don't modify project cards - keep original animation
+      }
       observer.observe(card);
     });
 
@@ -1004,7 +1916,7 @@
 
     // Preload critical images
     const criticalImages = [
-      './images/profilepic.jpeg',
+      './images/Subject.png',
       './images/angular.png',
       './images/appimage.png',
       './images/flask.png'
